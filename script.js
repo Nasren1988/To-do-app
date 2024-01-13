@@ -31,6 +31,18 @@ addBtn.addEventListener("click", (e)=>{
    list.append(createListItem(addInput.value))
    addInput.value ="";
 })
+
+searchInput.addEventListener("input", (e)=>{
+    Array.from(list.children).forEach(element => {
+        if(document.querySelector("#emptyMsg")){
+            return
+        }
+        if(!element.querySelector(".title").innerText.toLowerCase().includes(e.target.value.toLowerCase())){
+            element.style.display = "none"
+        }else
+            element.style.display = "flex"
+    });
+})
 function createListItem(itemvalue){
     let item = document.createElement("li");
     let title = document.createElement("span");
